@@ -1,4 +1,8 @@
-const { app, BrowserWindow } = require('electron');
+const { app, ipcMain, BrowserWindow, shell } = require('electron');
+
+const fs = require('fs')
+const os = require('os')
+const path = require('path')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -55,3 +59,18 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+ipcMain.on('print-to-pdf', function (event) {
+  const pdfPath = path.join(os.tmpdir(), 'print.pdf')
+  const win = BrowserWindow.fromWebContents(event.sender)
+  win.webContents.printToPDF({}, function (error, data) {
+    if (error) throw error
+    fs.writeFile(pdfPath, data, function (error) {
+      if (error) {
+        throw error
+      }
+      shell.openExternal('file://' + pdfPath)
+      event.sender.send('wrote-pdf', pdfPath)
+    })
+  })
+})

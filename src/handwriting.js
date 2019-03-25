@@ -1,5 +1,6 @@
 const $ = require('jquery')
 const Sugar = require('sugar')
+const ipc = require('electron').ipcRenderer
 
 Sugar.extend();
 
@@ -49,3 +50,14 @@ $("#generate").on("click", () => {
   var wr = $("#withoutRandom").prop("checked");
   hw_splitSpanTag(wr ? -1 : $("#beauty").val() || 250);
 });
+
+const printPDFBtn = document.getElementById('print')
+
+printPDFBtn.addEventListener('click', function (event) {
+  ipc.send('print-to-pdf')
+})
+
+ipc.on('wrote-pdf', function (event, path) {
+  const message = `Wrote PDF to: ${path}`
+  document.getElementById('pdf-path').innerHTML = message
+})
