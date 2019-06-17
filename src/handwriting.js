@@ -2,22 +2,30 @@ const $ = require('jquery')
 const Sugar = require('sugar')
 const ipc = require('electron').ipcRenderer
 
+const Vue = require('vue/dist/vue.common')
+
 Sugar.extend();
 
-$(() => {
-  hw_splitSpanTag();
-});
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      inputText: ''
+    }
+  },
+  computed: {
+    tegakinize() {
+      const CharBeautyRate = 250
 
-function hw_splitSpanTag(CharBeautyRate = 250) {
-  var hws = $(".hw");
-  hws.each((i, e) => {
-    e.innerHTML = e.textContent.split('').map(t => {
-      if (t === '\n') return `<br/>`;
-      if (t === '\t') return ``;
-      return `<span style="${CharBeautyRate > 0 ? hw_generateRandomizeStyle(CharBeautyRate) : ""}">${t}</span>`;
-    }).join("");
-  });
-}
+      const tegakinize = this.inputText.split('').map(t => {
+        if (t === '\n') return `<br/>`;
+        if (t === '\t') return ``;
+        return `<span style="${CharBeautyRate > 0 ? hw_generateRandomizeStyle(CharBeautyRate) : ""}">${t}</span>`;
+      }).join("");
+      return tegakinize
+    }
+  }
+})
 
 function hw_generateRandomizeStyle(CharBeautyRate) {
   var color = Number.random(0, 0x30);
@@ -36,20 +44,6 @@ function hw_generateRandomizeStyle(CharBeautyRate) {
 		transform: matrix(${tax},${tay},${tbx},${tby},${transfromLocate});
 	`;
 }
-
-$("#generate").on("click", () => {
-  // text set
-  var res = $("#result");
-  res.text($("#inputText").val());
-  // style
-  res.css({
-    "font-size": `${$("#fontsize").val() || 22}px`,
-    "line-height": `${$("#lineheight").val() || 1.3}`,
-  });
-  // randomize
-  var wr = $("#withoutRandom").prop("checked");
-  hw_splitSpanTag(wr ? -1 : $("#beauty").val() || 250);
-});
 
 const printPDFBtn = document.getElementById('print')
 
