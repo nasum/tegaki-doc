@@ -10,19 +10,23 @@ new Vue({
   el: "#app",
   data() {
     return {
-      inputText: ''
+      inputText: '',
+      beauty: 250
     }
   },
   computed: {
     tegakinize() {
-      const CharBeautyRate = 250
-
       const tegakinize = this.inputText.split('').map(t => {
         if (t === '\n') return `<br/>`;
         if (t === '\t') return ``;
-        return `<span style="${CharBeautyRate > 0 ? hw_generateRandomizeStyle(CharBeautyRate) : ""}">${t}</span>`;
+        return `<span style="${this.beauty > 0 ? hw_generateRandomizeStyle(this.beauty) : ""}">${t}</span>`;
       }).join("");
       return tegakinize
+    }
+  },
+  methods: {
+    printPdf() {
+      ipc.send('print-to-pdf')
     }
   }
 })
@@ -44,12 +48,6 @@ function hw_generateRandomizeStyle(CharBeautyRate) {
 		transform: matrix(${tax},${tay},${tbx},${tby},${transfromLocate});
 	`;
 }
-
-const printPDFBtn = document.getElementById('print')
-
-printPDFBtn.addEventListener('click', function (event) {
-  ipc.send('print-to-pdf')
-})
 
 ipc.on('wrote-pdf', function (event, path) {
   const message = `Wrote PDF to: ${path}`
