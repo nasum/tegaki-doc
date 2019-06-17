@@ -1,4 +1,3 @@
-const $ = require('jquery')
 const Sugar = require('sugar')
 const ipc = require('electron').ipcRenderer
 
