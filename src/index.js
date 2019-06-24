@@ -1,4 +1,4 @@
-const { app, ipcMain, BrowserWindow, shell, Menu } = require('electron');
+const { app, ipcMain, BrowserWindow, shell, Menu, dialog } = require('electron');
 
 const fs = require('fs')
 const os = require('os')
@@ -97,3 +97,49 @@ ipcMain.on('print-to-pdf', function (event) {
     })
   })
 })
+
+ipcMain.on('open-dialog', function (event) {
+  openLoadFile(event)
+})
+
+ipcMain.on('new-file', function (event, content) {
+  dialog.showSaveDialog(
+    mainWindow,
+    {},
+    fileName => {
+      fs.writeFile(fileName, content, function (err) {
+        if (err) {
+          throw err;
+        }
+      });
+      event.sender.send('set-editor', content, fileName)
+    }
+  )
+})
+
+ipcMain.on('update-file', function (event, content, path) {
+  if (!path) {
+    return
+  } else {
+    fs.writeFile(path, content, function (err) {
+      if (err) {
+        throw err;
+      }
+    })
+  }
+})
+
+function openLoadFile(event) {
+  dialog.showOpenDialog(
+    mainWindow,
+    {
+      properties: ["openFile"]
+    },
+    fileNames => {
+      if (fileNames) {
+        const content = fs.readFileSync(fileNames[0])
+        event.sender.send('set-editor', String(content), fileNames[0])
+      }
+    }
+  )
+}

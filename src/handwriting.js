@@ -10,6 +10,7 @@ new Vue({
   data() {
     return {
       inputText: '',
+      filePath: '',
       beauty: 250
     }
   },
@@ -23,10 +24,27 @@ new Vue({
       return tegakinize
     }
   },
+  watch: {
+    inputText(val) {
+      ipc.send('update-file', val, this.filePath)
+    }
+  },
   methods: {
     printPdf() {
       ipc.send('print-to-pdf')
+    },
+    openFile() {
+      ipc.send('open-dialog')
+    },
+    newFile() {
+      ipc.send('new-file', this.inputText, this.filePath)
     }
+  },
+  mounted() {
+    ipc.on('set-editor', (_, content, filePath) => {
+      this.inputText = content
+      this.filePath = filePath
+    })
   }
 })
 
