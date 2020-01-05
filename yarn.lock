@@ -202,16 +202,15 @@
   optionalDependencies:
     electron-winstaller "^3.0.4"
 
-"@electron-forge/maker-zip@6.0.0-beta.34":
-  version "6.0.0-beta.34"
-  resolved "https://registry.yarnpkg.com/@electron-forge/maker-zip/-/maker-zip-6.0.0-beta.34.tgz#64389bbe6582599168328030725b20c064c7b03a"
-  integrity sha512-kDMVcTsMlRN7tSQJYX3lApt08p63zHfkuIcPHBpV9fEOJABZK5iHhwNvx3U3x+Syp2ABRDEpGksjCvmBkyp5fw==
+"@electron-forge/maker-zip@6.0.0-beta.47":
+  version "6.0.0-beta.47"
+  resolved "https://registry.yarnpkg.com/@electron-forge/maker-zip/-/maker-zip-6.0.0-beta.47.tgz#939970b0813146bce2590cce82612758d7d4ed41"
+  integrity sha512-6yBCOd5RPsDfow2wLx8wthgx2d/olHk4yaip/gqL5+p1/C0XCJWFr4t3XvpgKqYQUhHFAVnPjKO9jQWNTydNkA==
   dependencies:
-    "@electron-forge/maker-base" "6.0.0-beta.34"
-    "@electron-forge/shared-types" "6.0.0-beta.34"
+    "@electron-forge/maker-base" "6.0.0-beta.47"
+    "@electron-forge/shared-types" "6.0.0-beta.47"
     cross-zip "^2.1.5"
-    fs-extra "^7.0.0"
-    pify "^4.0.0"
+    fs-extra "^8.1.0"
 
 "@electron-forge/plugin-base@6.0.0-beta.47":
   version "6.0.0-beta.47"
@@ -2432,7 +2431,7 @@ pify@^3.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
-pify@^4.0.0, pify@^4.0.1:
+pify@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
