@@ -13,6 +13,17 @@
     ora "^4.0.3"
     pretty-ms "^5.0.0"
 
+"@electron-forge/async-ora@6.0.0-beta.49":
+  version "6.0.0-beta.49"
+  resolved "https://registry.yarnpkg.com/@electron-forge/async-ora/-/async-ora-6.0.0-beta.49.tgz#208a70cb79df5eabcfff6d0a1d323fdb9478ad15"
+  integrity sha512-Oth8ed0lrqIwC3TrKPpYelOvkGgFWX5bWdo69zzFqiNL1ryzGfclG0kgGbADY/LNsyGu3ycqvG6NQFiOYhnbtQ==
+  dependencies:
+    colors "^1.4.0"
+    debug "^4.1.0"
+    log-symbols "^3.0.0"
+    ora "^4.0.3"
+    pretty-ms "^5.0.0"
+
 "@electron-forge/cli@6.0.0-beta.47":
   version "6.0.0-beta.47"
   resolved "https://registry.yarnpkg.com/@electron-forge/cli/-/cli-6.0.0-beta.47.tgz#98509c91844ffcc137992c0dfd6bb0f8a5fb0cc1"
@@ -145,6 +156,15 @@
     fs-extra "^8.1.0"
     which "^2.0.2"
 
+"@electron-forge/maker-base@6.0.0-beta.49":
+  version "6.0.0-beta.49"
+  resolved "https://registry.yarnpkg.com/@electron-forge/maker-base/-/maker-base-6.0.0-beta.49.tgz#db0ea29f8c2c3fcea888e6d8f3924d1d4e851fbf"
+  integrity sha512-S8WIRvt725LFnRNpdQ0aVal6u96MzoKepJlnh+BjUGQ86mOBZ7vtkyf3ipm0PL40XDwJMuOgy7vTzL/07F8yow==
+  dependencies:
+    "@electron-forge/shared-types" "6.0.0-beta.49"
+    fs-extra "^8.1.0"
+    which "^2.0.2"
+
 "@electron-forge/maker-deb@6.0.0-beta.47":
   version "6.0.0-beta.47"
   resolved "https://registry.yarnpkg.com/@electron-forge/maker-deb/-/maker-deb-6.0.0-beta.47.tgz#101dd3c75565587ac9d5737677ac1776ddbf3b8d"
@@ -176,14 +196,14 @@
   optionalDependencies:
     electron-winstaller "^4.0.0"
 
-"@electron-forge/maker-zip@6.0.0-beta.47":
-  version "6.0.0-beta.47"
-  resolved "https://registry.yarnpkg.com/@electron-forge/maker-zip/-/maker-zip-6.0.0-beta.47.tgz#939970b0813146bce2590cce82612758d7d4ed41"
-  integrity sha512-6yBCOd5RPsDfow2wLx8wthgx2d/olHk4yaip/gqL5+p1/C0XCJWFr4t3XvpgKqYQUhHFAVnPjKO9jQWNTydNkA==
+"@electron-forge/maker-zip@6.0.0-beta.49":
+  version "6.0.0-beta.49"
+  resolved "https://registry.yarnpkg.com/@electron-forge/maker-zip/-/maker-zip-6.0.0-beta.49.tgz#a25ca3e07d7f9e6da2f0449a96abb2faa2097098"
+  integrity sha512-ZLD6ZiddswJcVsCF/c43le8Qeeu2HPWHIGQxjB65RZ+ILSsaLUZ4AiTR9vIiM0ODrNa77Tgch9w25XYY0nzZmw==
   dependencies:
-    "@electron-forge/maker-base" "6.0.0-beta.47"
-    "@electron-forge/shared-types" "6.0.0-beta.47"
-    cross-zip "^2.1.5"
+    "@electron-forge/maker-base" "6.0.0-beta.49"
+    "@electron-forge/shared-types" "6.0.0-beta.49"
+    cross-zip "^3.0.0"
     fs-extra "^8.1.0"
 
 "@electron-forge/plugin-base@6.0.0-beta.47":
@@ -204,6 +224,16 @@
   integrity sha512-bD2bId56tuqhVzPRDEGaS4Qw4K/AFleftstznQOmkBDpBG3R+roN4y35kiiZ7aVu3ymzzFQ414Kh5s9MwBKHPw==
   dependencies:
     "@electron-forge/async-ora" "6.0.0-beta.47"
+    "@types/electron-packager" "^14.0.0"
+    electron-rebuild "^1.8.6"
+    ora "^4.0.3"
+
+"@electron-forge/shared-types@6.0.0-beta.49":
+  version "6.0.0-beta.49"
+  resolved "https://registry.yarnpkg.com/@electron-forge/shared-types/-/shared-types-6.0.0-beta.49.tgz#73163e6de405b0381adfb591b1ef6de730cac31d"
+  integrity sha512-SxH3kUb3cr2lwdMOqapDUib/roLmk665lEC1gKLJkRid/e/mkC/7Q+Tn14WHCOte0O1opGNgzVDnOlfFjdatEA==
+  dependencies:
+    "@electron-forge/async-ora" "6.0.0-beta.49"
     "@types/electron-packager" "^14.0.0"
     electron-rebuild "^1.8.6"
     ora "^4.0.3"
@@ -719,6 +749,13 @@ cross-zip@^2.1.5:
   integrity sha1-xdGgaksaEqAzBk+UbrWubUvc8+E=
   dependencies:
     rimraf "^2.5.2"
+
+cross-zip@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cross-zip/-/cross-zip-3.0.0.tgz#478136c7ba2df7e5888f7fb57211a4bbd5afafb4"
+  integrity sha512-cm+l8PJ6WiSQmKZ/x8DGvUm2u/3FX2JFs1AFd18gdHaVhP5Lf4oE6Jrj2Jd05JYSioz5x+nIRVp0zBQuzuCRcQ==
+  dependencies:
+    rimraf "^3.0.0"
 
 cuint@^0.2.2:
   version "0.2.2"
@@ -2515,6 +2552,13 @@ rimraf@^2.5.2, rimraf@^2.6.3, rimraf@~2.6.2:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.3.tgz#b2d104fe0d8fb27cf9e0a1cda8262dd3833c6cab"
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
+  dependencies:
+    glob "^7.1.3"
+
+rimraf@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-3.0.1.tgz#48d3d4cb46c80d388ab26cd61b1b466ae9ae225a"
+  integrity sha512-IQ4ikL8SjBiEDZfk+DFVwqRK8md24RWMEJkdSlgNLkyyAImcjf8SWvU1qFMDOb4igBClbTQ/ugPqXcRwdFTxZw==
   dependencies:
     glob "^7.1.3"
 
